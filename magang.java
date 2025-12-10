@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class magang {
 
     // Array paralel
@@ -11,18 +10,15 @@ public class magang {
     static String[] status = new String[50];
 
     static int jumlah = 0;
-
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         int pilih;
-
         do {
             System.out.println("\nSistem Pendaftaran Magang Mahasiswa");
             System.out.println("1. Tambah Data Magang");
-            System.out.println("2. Tampilkan Semua Pendaftar (Orang 2)");
-            System.out.println("3. Cari Pendaftar berdasarkan Prodi (Orang 2)");
+            System.out.println("2. Tampilkan Semua Pendaftar");
+            System.out.println("3. Cari Pendaftar berdasarkan Prodi");
             System.out.println("4. Hitung Status Magang (Orang 3)");
             System.out.println("5. Keluar");
             System.out.print("Pilih menu (1-5): ");
@@ -33,9 +29,19 @@ public class magang {
                 case 1:
                     tambahData();
                     break;
+
+                case 2:
+                    tampilkanData();
+                    break;
+
+                case 3:
+                    cariProdi();
+                    break;
+
                 case 5:
                     System.out.println("Terima kasih!");
                     break;
+
                 default:
                     System.out.println("Menu ini dikerjakan anggota lain.");
             }
@@ -84,4 +90,56 @@ public class magang {
 
         System.out.println("Data pendaftaran magang berhasil ditambahkan. Total pendaftar: " + jumlah);
     }
+
+    public static void tampilkanData() {
+        if (jumlah == 0) {
+            System.out.println("Belum ada data pendaftar.");
+            return;
+        }
+
+        System.out.println("\n=== Daftar Seluruh Pendaftar Magang ===");
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-3s | %-20s | %-12s | %-12s | %-15s | %-9s | %-10s |\n",
+                "No", "Nama", "NIM", "Prodi", "Perusahaan", "Semester", "Status");
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
+
+        for (int i = 0; i < jumlah; i++) {
+            System.out.printf("| %-3d | %-20s | %-12s | %-12s | %-15s | %-9d | %-10s |\n",
+                    (i + 1), nama[i], nim[i], prodi[i], perusahaan[i], semester[i], status[i]);
+        }
+
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
+    }
+
+    public static void cariProdi() {
+        if (jumlah == 0) {
+            System.out.println("Belum ada data pendaftar.");
+            return;
+        }
+
+        System.out.print("\nMasukkan Program Studi yang ingin dicari: ");
+        String cari = sc.nextLine();
+
+        boolean ditemukan = false;
+
+        System.out.println("\n=== Hasil Pencarian Untuk Prodi: " + cari + " ===");
+
+        for (int i = 0; i < jumlah; i++) {
+            if (prodi[i].equalsIgnoreCase(cari)) {
+                ditemukan = true;
+                System.out.println("--------------------------------------------");
+                System.out.println("Nama       : " + nama[i]);
+                System.out.println("NIM        : " + nim[i]);
+                System.out.println("Prodi      : " + prodi[i]);
+                System.out.println("Perusahaan : " + perusahaan[i]);
+                System.out.println("Semester   : " + semester[i]);
+                System.out.println("Status     : " + status[i]);
+            }
+        }
+
+        if (!ditemukan) {
+            System.out.println("Tidak ada pendaftar dari prodi tersebut.");
+        }
+    }
+
 }
