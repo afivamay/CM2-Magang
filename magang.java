@@ -1,3 +1,87 @@
+import java.util.Scanner;
+
 public class magang {
-    
+
+    // Array paralel
+    static String[] nama = new String[50];
+    static String[] nim = new String[50];
+    static String[] prodi = new String[50];
+    static String[] perusahaan = new String[50];
+    static int[] semester = new int[50];
+    static String[] status = new String[50];
+
+    static int jumlah = 0;
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int pilih;
+
+        do {
+            System.out.println("\nSistem Pendaftaran Magang Mahasiswa");
+            System.out.println("1. Tambah Data Magang");
+            System.out.println("2. Tampilkan Semua Pendaftar (Orang 2)");
+            System.out.println("3. Cari Pendaftar berdasarkan Prodi (Orang 2)");
+            System.out.println("4. Hitung Status Magang (Orang 3)");
+            System.out.println("5. Keluar");
+            System.out.print("Pilih menu (1-5): ");
+            pilih = sc.nextInt();
+            sc.nextLine();
+
+            switch (pilih) {
+                case 1:
+                    tambahData();
+                    break;
+                case 5:
+                    System.out.println("Terima kasih!");
+                    break;
+                default:
+                    System.out.println("Menu ini dikerjakan anggota lain.");
+            }
+
+        } while (pilih != 5);
+    }
+
+    public static void tambahData() {
+
+        if (jumlah >= 100) {
+            System.out.println("Kapasitas data penuh!");
+            return;
+        }
+
+        System.out.print("Nama Mahasiswa: ");
+        nama[jumlah] = sc.nextLine();
+
+        System.out.print("NIM: ");
+        nim[jumlah] = sc.nextLine();
+
+        System.out.print("Program Studi: ");
+        prodi[jumlah] = sc.nextLine();
+
+        System.out.print("Perusahaan Tujuan Magang: ");
+        perusahaan[jumlah] = sc.nextLine();
+
+        while (true) {
+            System.out.print("Semester pengambilan magang (6 atau 7): ");
+            semester[jumlah] = sc.nextInt();
+            sc.nextLine();
+            if (semester[jumlah] == 6 || semester[jumlah] == 7) break;
+            System.out.println("Semester harus 6 atau 7!");
+        }
+
+        while (true) {
+            System.out.print("Status magang (Diterima/Menunggu/Ditolak): ");
+            status[jumlah] = sc.nextLine();
+            if (status[jumlah].equals("Diterima") || 
+                status[jumlah].equals("Menunggu") || 
+                status[jumlah].equals("Ditolak")) break;
+
+            System.out.println("Status tidak valid!");
+        }
+
+        jumlah++;
+
+        System.out.println("Data pendaftaran magang berhasil ditambahkan. Total pendaftar: " + jumlah);
+    }
 }
