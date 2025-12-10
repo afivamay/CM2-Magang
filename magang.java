@@ -164,7 +164,6 @@ public class magang {
             System.out.println("Tidak ada pendaftar dari prodi tersebut.");
         }
     }
-<<<<<<< HEAD
 
     public static void hitungStatus() {
         if (jumlah == 0) {
@@ -191,6 +190,4 @@ public class magang {
         System.out.println("Menunggu : " + menunggu + " orang");
         System.out.println("Ditolak  : " + ditolak + " orang");
     }
-=======
->>>>>>> 2e3dafbb5bbed8d210a0ec0afb0f6b12b272f4f1
 }
