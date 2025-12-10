@@ -118,14 +118,27 @@ public class magang {
         }
 
         System.out.print("\nMasukkan Program Studi yang ingin dicari: ");
-        String cari = sc.nextLine();
-
+        String cari = sc.nextLine().toLowerCase();
         boolean ditemukan = false;
-
         System.out.println("\n=== Hasil Pencarian Untuk Prodi: " + cari + " ===");
 
-        for (int i = 0; i < jumlah; i++) {
-            if (prodi[i].equalsIgnoreCase(cari)) {
+        for (int i = 0; i < jumlah; i++) {  
+            String p = prodi[i].toLowerCase();
+
+            boolean sama = true;
+
+            if (p.length() == cari.length()) {
+                for (int j = 0; j < p.length(); j++) {
+                    if (p.charAt(j) != cari.charAt(j)) {
+                        sama = false;
+                        break;
+                    }
+                }
+            } else {
+                sama = false;
+            }
+
+            if (sama) {
                 ditemukan = true;
                 System.out.println("--------------------------------------------");
                 System.out.println("Nama       : " + nama[i]);
@@ -141,5 +154,4 @@ public class magang {
             System.out.println("Tidak ada pendaftar dari prodi tersebut.");
         }
     }
-
 }
