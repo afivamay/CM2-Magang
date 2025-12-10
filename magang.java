@@ -84,11 +84,16 @@ public class magang {
 
         while (true) {
             System.out.print("Status magang (Diterima/Menunggu/Ditolak): ");
-            status[jumlah] = sc.nextLine();
-            if (status[jumlah].equals("Diterima") ||
-                    status[jumlah].equals("Menunggu") ||
-                    status[jumlah].equals("Ditolak"))
+            String inputStatus = sc.nextLine().trim();
+
+            if (inputStatus.equalsIgnoreCase("Diterima") ||
+                    inputStatus.equalsIgnoreCase("Menunggu") ||
+                    inputStatus.equalsIgnoreCase("Ditolak")) {
+
+                status[jumlah] = inputStatus.substring(0, 1).toUpperCase() +
+                        inputStatus.substring(1).toLowerCase();
                 break;
+            }
 
             System.out.println("Status tidak valid!");
         }
@@ -132,7 +137,7 @@ public class magang {
         boolean ditemukan = false;
         System.out.println("\n=== Hasil Pencarian Untuk Prodi: " + cari + " ===");
 
-        for (int i = 0; i < jumlah; i++) {  
+        for (int i = 0; i < jumlah; i++) {
             String p = prodi[i].toLowerCase();
 
             boolean sama = true;
@@ -175,7 +180,6 @@ public class magang {
         int menunggu = 0;
         int ditolak = 0;
 
-        // Hitung berdasarkan status
         for (int i = 0; i < jumlah; i++) {
             if (status[i].equals("Diterima"))
                 diterima++;
