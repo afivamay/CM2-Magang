@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class magang {
 
     // Array paralel
-    static String[] nama = new String[50];
-    static String[] nim = new String[50];
-    static String[] prodi = new String[50];
-    static String[] perusahaan = new String[50];
-    static int[] semester = new int[50];
-    static String[] status = new String[50];
+    static String[] nama = new String[10];
+    static String[] nim = new String[10];
+    static String[] prodi = new String[10];
+    static String[] perusahaan = new String[10];
+    static int[] semester = new int[10];
+    static String[] status = new String[10];
 
     static int jumlah = 0;
     static Scanner sc = new Scanner(System.in);
@@ -48,7 +48,7 @@ public class magang {
                     break;
 
                 default:
-                    System.out.println("Menu ini dikerjakan anggota lain.");
+                    System.out.println("Menu tidak tersedia.");
             }
 
         } while (pilih != 5);
@@ -56,7 +56,7 @@ public class magang {
 
     public static void tambahData() {
 
-        if (jumlah >= 100) {
+        if (jumlah >= 10) {
             System.out.println("Kapasitas data penuh!");
             return;
         }
